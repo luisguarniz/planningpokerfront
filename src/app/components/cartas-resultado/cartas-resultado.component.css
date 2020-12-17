@@ -1,0 +1,46 @@
+.container{
+    
+    justify-content: center;
+}
+.carta{
+    position: relative;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 200px;
+    width: 150px;
+    background-color: #C4C4C4;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.carta p{
+    font-size: 50px;
+}
+.btn-warning {
+    position: relative;
+    float: left;
+}
+.div-btnAbajo{
+display: flex;
+justify-content: space-between;
+}
+.div-icon{
+    position: absolute;
+    top: 5px;
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+}
+.div-icon i{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+background-color: red;
+color:white;
+border-radius: 50%;
+
+}

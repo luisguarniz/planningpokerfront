@@ -1,0 +1,26 @@
+.div-boquearCartas{
+    background-color: black;
+    color:white;
+    opacity: 0.5;
+    position: absolute;
+    width: 83.4%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    left: 20px;
+}
+.div-cartas{
+    position: relative;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+.btnhost{
+    position: relative;
+    left: 20px;
+}

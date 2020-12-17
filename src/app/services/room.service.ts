@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
+import { Room } from './room';
+import { Observable } from 'rxjs';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RoomService {
+
+  URL = "http://localhost:8000/Room/" //desde donde se aran las peticiones
+
+  constructor(private _http : HttpClient) { }
+
+  getRoom(): Observable<Room[]>{
+    return this._http.get<Room[]>(this.URL+'makeRoom');
+    
+  }
+
+  desactivateRoom(id:any): Observable<any>{
+    return this._http.get(this.URL+'deactivateRoom/'+id);//revisar estos conceptos. por que angular seguro no deja poner como argumento un id cuando es de tipo get
+  }
+
+}

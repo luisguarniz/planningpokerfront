@@ -8,5 +8,6 @@ if (environment.production) {
   enableProdMode();
 }
 
+//este archivo main.ts es es el primer archivo que se ejecuta cuando carga la pagina y a su ves ejecuta AppModule
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
