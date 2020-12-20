@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class RoomService {
 
- // URL = "http://localhost:8000/Room/" //desde donde se aran las peticiones
+ 
   constructor(private _http : HttpClient) { }
 
   getRoom(): Observable<Room[]>{

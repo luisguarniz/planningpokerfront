@@ -23,7 +23,9 @@ export class InicioComponent implements OnInit {
   AdminUserCode: any;
   cookieExists: boolean;
   cookieAdminUserCode:any;
-  existOrNotCookie
+  existOrNotCookie;
+
+  public inputMessage;
   constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService) 
   { 
     this.echo = this.messageservice.websocket();
@@ -31,11 +33,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("mensaje al cargar");
-    
-    this.echo.channel('channel-message')
-    .listen('MessageEvent', (resp) => {
-      console.log(resp);
-    });
+
   }
 
   navegarInicioHost(){

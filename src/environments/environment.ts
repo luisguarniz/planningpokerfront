@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   urlBase: `http://localhost:8000/`,
   pusher_key:`1234ASD`,
-  pusher_cluster:`mt1`
+  pusher_cluster:`mt1`,
+  urlWebsocket: `http://localhost:8066/ServiceWebSocket/public/`
 };
 
 /*

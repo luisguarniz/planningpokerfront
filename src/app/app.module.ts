@@ -19,6 +19,7 @@ import { InvitedStartComponent } from './components/invited-start/invited-start.
 import { CartasVotingInvitedComponent } from './components/cartas-voting-invited/cartas-voting-invited.component';
 
 import { HttpClientModule } from '@angular/common/http'; //esto sirve para poder hacer llamadas al servidor
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HttpClientModule } from '@angular/common/http'; //esto sirve para poder
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

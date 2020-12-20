@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Echo from 'laravel-echo';
 import { environment } from 'src/environments/environment';
@@ -7,7 +8,16 @@ import { environment } from 'src/environments/environment';
 })
 export class MessageService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+
+
+  sendMessage(message: string) {
+    const url = `${environment.urlWebsocket}api/MessageController/send`;
+    const data = {
+      message
+    };
+    return this.http.post(url, data);
+  }
 
   websocket(): Echo{
      return new Echo ({
@@ -16,7 +26,7 @@ export class MessageService {
       key: 'ASD1234FG',
       wsHost: window.location.hostname,
       cluster: 'mt1',
-      authEndpoint: `${environment.urlBase}broadcasting/auth`,
+      authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
       wsPort: 6001,
       forceTLS: false,
       disableStats: true,

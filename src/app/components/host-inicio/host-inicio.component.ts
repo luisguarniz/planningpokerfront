@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-host-inicio',
@@ -6,12 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./host-inicio.component.css']
 })
 export class HostInicioComponent implements OnInit {
-
-  constructor( ) { }
-
-  ngOnInit(): void {
-    
+  private echo ;
+  constructor( public messageService :MessageService ) 
+  { 
+   this.echo = messageService.websocket();
   }
 
+  ngOnInit(): void {
+
+    this.echo.channel('channel-message')
+    .listen('MessageEvent', (resp) => {
+      console.log(resp);
+    });
+  }
 
 }
