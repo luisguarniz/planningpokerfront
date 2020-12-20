@@ -8,6 +8,7 @@ import { Room } from '../../services/room'
 import { JsonpClientBackend } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
+import Echo from 'laravel-echo';
 
 
 @Component({
@@ -17,16 +18,24 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class InicioComponent implements OnInit {
 
+  echo : Echo;
   rooms ;
   AdminUserCode: any;
   cookieExists: boolean;
   cookieAdminUserCode:any;
   existOrNotCookie
-  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService) { }
+  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService) 
+  { 
+    this.echo = this.messageservice.websocket();
+  }
 
   ngOnInit(): void {
     console.log("mensaje al cargar");
-    this.messageservice.websocket();
+    
+    this.echo.channel('channel-message')
+    .listen('MessageEvent', (resp) => {
+      console.log(resp);
+    });
   }
 
   navegarInicioHost(){

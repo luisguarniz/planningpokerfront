@@ -9,8 +9,8 @@ export class MessageService {
 
   constructor() { }
 
-  websocket(){
-    const echo = new Echo ({
+  websocket(): Echo{
+     return new Echo ({
 
       broadcaster: 'pusher',
       key: 'ASD1234FG',
@@ -22,9 +22,7 @@ export class MessageService {
       disableStats: true,
       enabledTransports: ['ws']
     });
-    echo.channel('channel-message')
-    .listen('MessageEvent', (resp) => {
-      console.log(resp);
-    });
-  }
+  };
+  
+  
 }
