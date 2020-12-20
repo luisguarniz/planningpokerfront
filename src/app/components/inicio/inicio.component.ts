@@ -7,6 +7,8 @@ import { RoomService } from '../../services/room.service';
 import { Room } from '../../services/room'
 import { JsonpClientBackend } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
+import { MessageService } from 'src/app/services/message.service';
+
 
 @Component({
   selector: 'app-inicio',
@@ -20,9 +22,11 @@ export class InicioComponent implements OnInit {
   cookieExists: boolean;
   cookieAdminUserCode:any;
   existOrNotCookie
-  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService) { }
+  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService) { }
 
   ngOnInit(): void {
+    console.log("mensaje al cargar");
+    this.messageservice.websocket();
   }
 
   navegarInicioHost(){
@@ -61,4 +65,7 @@ export class InicioComponent implements OnInit {
     this.cookieExists = this.cookie.check('AdminUserCode'); //preguntar si esta cookie existe
     return this.cookieExists;
   }
+
+
+
 }

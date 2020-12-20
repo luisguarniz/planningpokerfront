@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-btn-start-feedback',
   templateUrl: './btn-start-feedback.component.html',
@@ -17,4 +18,5 @@ export class BtnStartFeedbackComponent implements OnInit {
   navegarStopVoting(){
     this.router.navigate(["/hostVoting"]);
   }
+
 }

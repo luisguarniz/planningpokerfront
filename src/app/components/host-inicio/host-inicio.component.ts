@@ -10,6 +10,7 @@ export class HostInicioComponent implements OnInit {
   constructor( ) { }
 
   ngOnInit(): void {
+    
   }
 
 
