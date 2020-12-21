@@ -11,12 +11,12 @@ export class MessageService {
   constructor(private http : HttpClient) { }
 
 
-  sendMessage(message: string) {
-    const url = `${environment.urlWebsocket}api/MessageController/send`;
-    const data = {
+  sendMessage() { //message: string
+    const url = `${environment.urlWebsocket}api/MessageController/responseDate`;
+   /*  const data = {    esta parte se necesitaria su nuestra consulta fuera POST por que necesitamos enviar algo
       message
-    };
-    return this.http.post(url, data);
+    }; */
+    return this.http.get(url); // "data" y tendriamos que asignar el valor aca para enviar un POST
   }
 
   websocket(): Echo{

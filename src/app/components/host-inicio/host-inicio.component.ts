@@ -17,7 +17,7 @@ export class HostInicioComponent implements OnInit {
 
     this.echo.channel('channel-message')
     .listen('MessageEvent', (resp) => {
-      console.log(resp);
+      //console.log(resp);
     });
   }
 

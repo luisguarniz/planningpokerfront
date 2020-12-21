@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/services/message.service';
@@ -10,8 +11,8 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class BtnStartFeedbackComponent implements OnInit {
 
-  public inputMessage;
-  public respuestaWS;
+  //public inputMessage;
+  public respuestaWS = {ok : " ", message:" "};
   constructor(private router:Router , private messageService : MessageService) { }
 
   ngOnInit(): void {
@@ -23,10 +24,9 @@ export class BtnStartFeedbackComponent implements OnInit {
   }
 
   sendMessage(){
-    console.log(this.inputMessage);
 
-    this.messageService.sendMessage(this.inputMessage)
-    .subscribe( resp => {
+    this.messageService.sendMessage()//this.inputMessage
+    .subscribe( (resp:any)  => {
       console.log(resp);
       this.respuestaWS = resp;
     });
