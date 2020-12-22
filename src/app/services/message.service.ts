@@ -23,14 +23,14 @@ export class MessageService {
      return new Echo ({
 
       broadcaster: 'pusher',
-      key: 'ASD1234FG',
-      wsHost: window.location.hostname,
+      key: '751102ec3003a62331c0',
+     // wsHost: window.location.hostname,
       cluster: 'mt1',
-      authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
-      wsPort: 6001,
-      forceTLS: false,
-      disableStats: true,
-      enabledTransports: ['ws']
+     // authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
+     // wsPort: 6001,
+      forceTLS: true,
+     // disableStats: true,
+      //enabledTransports: ['ws']
     });
   };
   
