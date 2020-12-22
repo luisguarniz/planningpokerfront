@@ -12,7 +12,7 @@ import { MessageService } from 'src/app/services/message.service';
 export class BtnStartFeedbackComponent implements OnInit {
 
   //public inputMessage;
-  public respuestaWS = {ok : " ", message:" "};
+  public respuestaWS = {ok : " ", message:" ", hora: " " , fecha:" "};
   constructor(private router:Router , private messageService : MessageService) { }
 
   ngOnInit(): void {
