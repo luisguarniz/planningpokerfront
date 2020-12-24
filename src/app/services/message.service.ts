@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import Echo from 'laravel-echo';
 import { environment } from 'src/environments/environment';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, public cookieService : CookieService) { }
 
 
   sendMessage() { //message: string
@@ -21,18 +22,25 @@ export class MessageService {
 
   websocket(): Echo{
      return new Echo ({
-
-      broadcaster: 'pusher',
+          
+      broadcaster: 'pusher',//si usara laravel-websocket seria api/broadcasting/auth 
       key: '751102ec3003a62331c0',
      // wsHost: window.location.hostname,
-      cluster: 'mt1',
-     // authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
+      //cluster: 'mt1',
+     // authEndpoint: 'pusher/auth',
+    //authEndpoint: 'broadcasting/auth',
+     // auth:{
+    //    headers:{
+      //    Accept: 'application/json',
+      //    Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('cookie'))}`
+       // }
+     // },
+    authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
      // wsPort: 6001,
       forceTLS: true,
      // disableStats: true,
-      //enabledTransports: ['ws']
+     // enabledTransports: ['ws']
     });
   };
-  
   
 }

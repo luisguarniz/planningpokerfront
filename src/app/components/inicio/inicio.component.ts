@@ -18,6 +18,7 @@ import Echo from 'laravel-echo';
 })
 export class InicioComponent implements OnInit {
 
+  token : any;
   echo : Echo;
   rooms ;
   AdminUserCode: any;
@@ -61,11 +62,13 @@ export class InicioComponent implements OnInit {
       this.rooms = response;
       this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
       this.AdminUserCode = this.dataservice.Servicesrooms.AdminUserCode;
+      this.token = this.dataservice.Servicesrooms.token;
     
-      this.cookie.set('AdminUserCode',this.AdminUserCode);//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
+      this.cookie.set('AdminUserCode',JSON.stringify(this.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
+      this.cookie.set('tonken',this.token);
       this.router.navigate(["/hostStart"]);
     
-    })
+    });
 
   }
   comprobarCookie(){

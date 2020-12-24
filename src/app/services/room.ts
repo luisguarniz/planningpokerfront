@@ -4,4 +4,5 @@ export interface Room {
     RoomCode : string;
     NameUsuario : string;
     AdminUserCode : string;
+    token : any;
 }
