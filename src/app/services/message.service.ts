@@ -36,7 +36,7 @@ export class MessageService {
        // }
      // },
      authEndpoint: `${environment.urlWebsocket}api/broadcasting/auth`,//cuando modifico aca me lanza el error 500
-     // wsPort: 6001,
+      wsPort: 6001,
       forceTLS: true,
      // disableStats: true,
      // enabledTransports: ['ws']
