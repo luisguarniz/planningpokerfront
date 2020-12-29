@@ -9,6 +9,7 @@ import { JsonpClientBackend } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
 import Echo from 'laravel-echo';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -20,14 +21,17 @@ export class InicioComponent implements OnInit {
 
   token : any;
   echo : Echo;
+  user ;
   rooms ;
   AdminUserCode: any;
   cookieExists: boolean;
   cookieAdminUserCode:any;
-  existOrNotCookie;
+  existOrNotCookie:any;
+  NameUsuario:any;
+  admCode:any;
 
   public inputMessage;
-  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService) 
+  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService, public userservice:UserService) 
   { 
     this.echo = this.messageservice.websocket();
   }
@@ -55,20 +59,29 @@ export class InicioComponent implements OnInit {
      this._RoomService.desactivateRoom(this.cookieAdminUserCode).subscribe(response=>{
        // respose responde null por que no envio nada desde LARAVEL
      });
-     
     }
-     this._RoomService.getRoom().subscribe( response =>{
 
-      this.rooms = response;
-      this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
-      this.AdminUserCode = this.dataservice.Servicesrooms.AdminUserCode;
-      this.token = this.dataservice.Servicesrooms.token;
-    
-      this.cookie.set('AdminUserCode',JSON.stringify(this.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
-      this.cookie.set('tonken',this.token);
-      this.router.navigate(["/hostStart"]);
-    
-    });
+    this.userservice.getUser().subscribe( response =>{
+       this.user = response;
+       this.dataservice.Servicesuser = this.user;
+       this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
+       this.AdminUserCode = this.dataservice.Servicesuser.AdminUserCode;
+       this.token = this.dataservice.Servicesuser.token;//detener aca la ejecucion para ver si "AdminUserCode" contiene valor
+       
+       this._RoomService.getRoom(this.dataservice.Servicesuser.NameUsuario , this.dataservice.Servicesuser.AdminUserCode, this.dataservice.Servicesuser.token).subscribe( response =>{
+        console.log(response);
+        this.rooms = response;
+        this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
+        this.cookie.set('AdminUserCode',JSON.stringify(this.dataservice.Servicesrooms.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
+        this.cookie.set('token',JSON.stringify(this.dataservice.Servicesrooms.token));
+        this.router.navigate(["/hostStart"]);
+      
+      });
+      });
+
+    //en los parentesis van las variables que enviaremos al observable
+    //el response contiene la respuesta del observable
+
 
   }
   comprobarCookie(){

@@ -26,16 +26,16 @@ export class MessageService {
       broadcaster: 'pusher',//si usara laravel-websocket seria api/broadcasting/auth 
       key: '751102ec3003a62331c0',
      // wsHost: window.location.hostname,
-      //cluster: 'mt1',
-     // authEndpoint: 'pusher/auth',
-    //authEndpoint: 'broadcasting/auth',
+      cluster: 'mt1',
+     //authEndpoint: 'pusher/auth',
+     // authEndpoint: 'broadcasting/auth',
      // auth:{
     //    headers:{
       //    Accept: 'application/json',
       //    Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('cookie'))}`
        // }
      // },
-    authEndpoint: `${environment.urlBase}api/broadcasting/auth`,
+     authEndpoint: `${environment.urlWebsocket}api/broadcasting/auth`,//cuando modifico aca me lanza el error 500
      // wsPort: 6001,
       forceTLS: true,
      // disableStats: true,

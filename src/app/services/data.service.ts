@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Room } from './room';
+import { User } from './user';
 
 
 @Injectable({
@@ -8,6 +9,7 @@ import { Room } from './room';
 export class DataService {
 
   Servicesrooms : Room;
+  Servicesuser : User;
   constructor() { }
 
 
