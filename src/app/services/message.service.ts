@@ -13,7 +13,7 @@ export class MessageService {
 
 
   sendMessage() { //message: string
-    const url = `${environment.urlWebsocket}api/MessageController/responseDate`;
+    const url = `${environment.urlBase}api/MessageController/responseDate`;
    /*  const data = {    esta parte se necesitaria su nuestra consulta fuera POST por que necesitamos enviar algo
       message
     }; */
@@ -23,23 +23,23 @@ export class MessageService {
   websocket(): Echo{
      return new Echo ({
           
-      broadcaster: 'pusher',//si usara laravel-websocket seria api/broadcasting/auth 
-      key: '751102ec3003a62331c0',
-     // wsHost: window.location.hostname,
-      cluster: 'mt1',
-     //authEndpoint: 'pusher/auth',
-     // authEndpoint: 'broadcasting/auth',
-     // auth:{
-    //    headers:{
-      //    Accept: 'application/json',
-      //    Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('cookie'))}`
-       // }
-     // },
-     authEndpoint: `${environment.urlWebsocket}api/broadcasting/auth`,//cuando modifico aca me lanza el error 500
+      broadcaster: 'pusher',
+      key: environment.pusher_key,
+     // wsHost: 'localhost:8000',
+      wsHost: window.location.hostname,
+      cluster: environment.pusher_cluster,
+      authEndpoint: `${ environment.urlBase }api/broadcasting/auth`,//esta ruta va autenticar por token
+      auth:{
+        headers:{
+          Accept: 'application/json',
+          Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('token'))}`
+        }
+    },
+      
       wsPort: 6001,
-      forceTLS: true,
-     // disableStats: true,
-     // enabledTransports: ['ws']
+     // forceTLS: true,
+      disableStats: true,
+     enabledTransports: ['ws']
     });
   };
   

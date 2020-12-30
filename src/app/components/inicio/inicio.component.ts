@@ -33,7 +33,7 @@ export class InicioComponent implements OnInit {
   public inputMessage;
   constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService, public userservice:UserService) 
   { 
-    this.echo = this.messageservice.websocket();
+    //this.echo = this.messageservice.websocket();
   }
 
   ngOnInit(): void {

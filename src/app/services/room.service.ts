@@ -17,7 +17,7 @@ export class RoomService {
 
   getRoom(NameUsuario:any , AdminUserCode:any, token:any): Observable<Room[]>{
 
-    const url = `${environment.urlBase}Room/makeRoom`;
+    const url = `${environment.urlBase}api/Room/makeRoom`;
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${ token }`
@@ -34,7 +34,7 @@ export class RoomService {
   }
 
   desactivateRoom(id:any): Observable<any>{
-    const url = `${environment.urlBase}Room/deactivateRoom`;
+    const url = `${environment.urlBase}api/Room/deactivateRoom`;
     return this._http.put(url,id);//revisar estos conceptos. por que angular seguro no deja poner como argumento un id cuando es de tipo get
   }
 

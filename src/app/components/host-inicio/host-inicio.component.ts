@@ -15,8 +15,8 @@ export class HostInicioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.echo.private('channel-message')
-    .listen('MessageEvent', (resp) => {//.MessageEvent
+    this.echo.channel('channel-test')
+    .listen('messageTest', (resp) => {//.MessageEvent
       console.log(resp);
     });
   }
