@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
 
 @Component({
@@ -8,13 +9,12 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class HostInicioComponent implements OnInit {
   private echo ;
-  constructor( public messageService :MessageService ) 
+  constructor( public messageService :MessageService) 
   { 
    this.echo = messageService.websocket();
   }
 
   ngOnInit(): void {
-
     this.echo.channel('channel-test')
     .listen('messageTest', (resp) => {//.MessageEvent
       console.log(resp);

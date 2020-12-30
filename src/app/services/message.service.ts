@@ -11,15 +11,6 @@ export class MessageService {
 
   constructor(private http : HttpClient, public cookieService : CookieService) { }
 
-
-  sendMessage() { //message: string
-    const url = `${environment.urlBase}api/MessageController/responseDate`;
-   /*  const data = {    esta parte se necesitaria su nuestra consulta fuera POST por que necesitamos enviar algo
-      message
-    }; */
-    return this.http.get(url); // "data" y tendriamos que asignar el valor aca para enviar un POST
-  }
-
   websocket(): Echo{
      return new Echo ({
           

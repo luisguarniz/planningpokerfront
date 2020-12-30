@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
 import Echo from 'laravel-echo';
 import { UserService } from 'src/app/services/user.service';
+import { InvitedService } from 'src/app/services/invited.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class InicioComponent implements OnInit {
   token : any;
   echo : Echo;
   user ;
+  invited;
   rooms ;
   AdminUserCode: any;
   cookieExists: boolean;
@@ -29,11 +31,12 @@ export class InicioComponent implements OnInit {
   existOrNotCookie:any;
   NameUsuario:any;
   admCode:any;
+  NameInvited:any;
 
   public inputMessage;
-  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService, public userservice:UserService) 
+  constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService, public userservice:UserService, public invitedservice: InvitedService) 
   { 
-    //this.echo = this.messageservice.websocket();
+
   }
 
   ngOnInit(): void {
@@ -48,9 +51,7 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['/startInvited']);
   }
 
-  //con este metodo traemos los datos desde Laravel
   manageRoom(){
-
 
     this.existOrNotCookie = this.comprobarCookie();
     
@@ -62,12 +63,14 @@ export class InicioComponent implements OnInit {
     }
 
     this.userservice.getUser().subscribe( response =>{
+      console.log(response);
        this.user = response;
        this.dataservice.Servicesuser = this.user;
        this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
        this.AdminUserCode = this.dataservice.Servicesuser.AdminUserCode;
-       this.token = this.dataservice.Servicesuser.token;//detener aca la ejecucion para ver si "AdminUserCode" contiene valor
+       this.token = this.dataservice.Servicesuser.token;
        
+       //ya teniendo los datos del Host entonces creamos la sala
        this._RoomService.getRoom(this.dataservice.Servicesuser.NameUsuario , this.dataservice.Servicesuser.AdminUserCode, this.dataservice.Servicesuser.token).subscribe( response =>{
         console.log(response);
         this.rooms = response;
@@ -78,17 +81,20 @@ export class InicioComponent implements OnInit {
       
       });
       });
-
-    //en los parentesis van las variables que enviaremos al observable
-    //el response contiene la respuesta del observable
-
-
   }
   comprobarCookie(){
     this.cookieExists = this.cookie.check('AdminUserCode'); //preguntar si esta cookie existe
     return this.cookieExists;
   }
 
-
-
+  
+manageInvited(){
+      this.invitedservice.getInvited().subscribe( response =>{
+        console.log(response);
+      this.invited = response;
+      this.dataservice.Serviceinvited = this.invited;
+      console.log(this.dataservice.Serviceinvited)
+      this.router.navigate(["/hostStart"]);
+  })
+}
 }

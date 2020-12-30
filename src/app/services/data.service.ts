@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Invited } from './invited';
 import { Room } from './room';
 import { User } from './user';
 
@@ -7,10 +8,8 @@ import { User } from './user';
   providedIn: 'root'
 })
 export class DataService {
-
+  Serviceinvited : Invited;
   Servicesrooms : Room;
   Servicesuser : User;
   constructor() { }
-
-
 }

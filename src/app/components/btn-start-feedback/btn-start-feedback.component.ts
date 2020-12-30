@@ -23,12 +23,4 @@ export class BtnStartFeedbackComponent implements OnInit {
     this.router.navigate(["/hostVoting"]);
   }
 
-  sendMessage(){
-
-    this.messageService.sendMessage()//this.inputMessage
-    .subscribe( (resp:any)  => {
-      console.log(resp);
-      this.respuestaWS = resp;
-    });
-  }
 }
