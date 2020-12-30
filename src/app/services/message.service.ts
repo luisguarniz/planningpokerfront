@@ -25,17 +25,15 @@ export class MessageService {
           
       broadcaster: 'pusher',
       key: environment.pusher_key,
-     // wsHost: 'localhost:8000',
-      wsHost: window.location.hostname,
+      wsHost: window.location.hostname,// wsHost: 'localhost:8000',
       cluster: environment.pusher_cluster,
-      authEndpoint: `${ environment.urlBase }api/broadcasting/auth`,//esta ruta va autenticar por token
-      auth:{
-        headers:{
-          Accept: 'application/json',
-          Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('token'))}`
-        }
-    },
-      
+ //     authEndpoint: `${ environment.urlBase }api/broadcasting/auth`,//esta ruta va autenticar por token
+  //    auth:{
+  //      headers:{
+  //        Accept: 'application/json',
+    //      Authorization: `Bearer ${this.cookieService.get(this.cookieService.get('token'))}`
+   //     }
+ //   },
       wsPort: 6001,
      // forceTLS: true,
       disableStats: true,
