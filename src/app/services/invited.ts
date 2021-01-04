@@ -1,4 +1,4 @@
 export interface Invited {
-    nameInvited: string;
+    nameInvited?: string;
     invitedUserCode: string;
 }

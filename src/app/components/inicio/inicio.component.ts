@@ -1,11 +1,8 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 
 import { RoomService } from '../../services/room.service';
-import { Room } from '../../services/room'
-import { JsonpClientBackend } from '@angular/common/http';
 import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
 import Echo from 'laravel-echo';
@@ -33,15 +30,17 @@ export class InicioComponent implements OnInit {
   admCode:any;
   NameInvited:any;
 
+  public _prevSelected: any;
+  public colorCheck;
   public inputMessage;
   constructor( private router : Router, public _RoomService: RoomService, private dataservice: DataService, private cookie: CookieService, public messageservice: MessageService, public userservice:UserService, public invitedservice: InvitedService) 
   { 
 
   }
-
+  
   ngOnInit(): void {
     console.log("mensaje al cargar");
-
+    this.colorCheck = true;
   }
 
   navegarInicioHost(){

@@ -24,3 +24,16 @@
 display: flex;
 justify-content: space-between;
 }
+
+.colorAzul{
+    background-color: blue;
+}
+
+.primario{
+    background-color: cadetblue;
+}
+
+.div-btnAbajo{
+    display: flex;
+    justify-content: space-between;
+    }

@@ -1,13 +1,62 @@
 
-        <div class="carta">0</div> 
-        <div class="carta">1/2</div>
-        <div class="carta">1</div>
-        <div class="carta">2</div>
-        <div class="carta">3</div>
-        <div class="carta">5</div>
-        <div class="carta">8</div>
-        <div class="carta">13</div>
-        <div class="carta">20</div>
-        <div class="carta">40</div>
-        <div class="carta">100</div>
-        <div class="carta">?</div>
+        <div class="carta" #idDiv (click)="alternarClass($event)">
+                <label for="carta1" class="acordeon__titulo">0
+                </label>
+        </div>
+
+        <div class="carta"  (click)="alternarClass($event)">
+                <label for="carta1" class="acordeon__titulo">0.5
+                </label>
+        </div>
+
+        <div class="carta"  (click)="alternarClass($event)">
+                <label for="carta1" class="acordeon__titulo">1
+                </label>
+        </div>
+        
+        <div class="carta"  (click)="alternarClass($event)">
+                <label for="carta2" class="acordeon__titulo">2
+                </label>
+        </div>
+        <div class="carta"  (click)="alternarClass($event)">
+                <label for="carta3" class="acordeon__titulo">3
+                </label>
+        </div>
+        <div class="carta" #id5 (click)="alternarClass($event)">
+                <label for="carta5" class="acordeon__titulo">5
+                </label>
+        </div>
+        <div class="carta" #id8 (click)="alternarClass($event)">
+                <label for="carta8" class="acordeon__titulo">8
+               </label>
+        </div>
+        <div class="carta" #id13 (click)="alternarClass($event)">
+                <label for="carta13" class="acordeon__titulo">13
+                </label>
+        </div>
+        <div  class="carta" #id20 (click)="alternarClass($event)">
+                <label for="carta20" class="acordeon__titulo">20
+              </label>
+        </div>
+        <div  class="carta" #id40 (click)="alternarClass($event)">
+                <label for="carta40" class="acordeon__titulo">40
+                </label>
+        </div>
+        <div class="carta" #id100 (click)="alternarClass($event)">
+                <label for="carta100" class="acordeon__titulo">100
+                </label>
+        </div>
+
+        <div class="carta" #consulta (click)="alternarClass($event)">
+                <label for="cartacuestion" class="acordeon__titulo">?
+                </label>
+        </div>
+        <div class="row">
+                <button (click)="navegarStopVoting()" type="button" class="btn btn-primary btn-lg ml-1">Start voting</button>
+                <button (click)="presionar()">Voting</button>
+                <button type="button" class="btn btn-warning btn-lg">Feedback</button>
+        </div>
+
+
+
+

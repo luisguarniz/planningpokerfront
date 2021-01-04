@@ -9,7 +9,6 @@ import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { CartasComponent } from './components/cartas/cartas.component';
 import { HostInicioComponent } from './components/host-inicio/host-inicio.component';
 import { HostVotingComponent } from './components/host-voting/host-voting.component';
-import { BtnStartFeedbackComponent } from './components/btn-start-feedback/btn-start-feedback.component';
 import { BtnStopVotingComponent } from './components/btn-stop-voting/btn-stop-voting.component';
 import { ParticipantsComponent } from './components/participants/participants.component';
 import { HostResultsVotingComponent } from './components/host-results-voting/host-results-voting.component';
@@ -29,7 +28,6 @@ import { FormsModule } from '@angular/forms';
     CartasComponent,
     HostInicioComponent,
     HostVotingComponent,
-    BtnStartFeedbackComponent,
     BtnStopVotingComponent,
     ParticipantsComponent,
     HostResultsVotingComponent,
