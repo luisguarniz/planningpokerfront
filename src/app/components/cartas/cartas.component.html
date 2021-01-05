@@ -1,55 +1,66 @@
 
-        <div class="carta" #idDiv (click)="alternarClass($event)">
-                <label for="carta1" class="acordeon__titulo">0
-                </label>
+        <div class="carta" #idDiv (click)="alternarClass($event, idDiv0)">
+                <input type="text" name="" #idDiv0 value="0" style="display: none;">
+                0
         </div>
 
-        <div class="carta"  (click)="alternarClass($event)">
-                <label for="carta1" class="acordeon__titulo">0.5
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv05)">
+                <input type="text" name="" #idDiv05 value="0.5" style="display: none;">
+                0.5
+                
         </div>
 
-        <div class="carta"  (click)="alternarClass($event)">
-                <label for="carta1" class="acordeon__titulo">1
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv1)">
+                <input type="text" name="" #idDiv1 value="1" style="display: none;">
+                1
+                
         </div>
         
-        <div class="carta"  (click)="alternarClass($event)">
-                <label for="carta2" class="acordeon__titulo">2
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv2)">
+                <input type="text" name="" #idDiv2 value="2" style="display: none;">
+                2
+                
         </div>
-        <div class="carta"  (click)="alternarClass($event)">
-                <label for="carta3" class="acordeon__titulo">3
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv3)">
+                <input type="text" name="" #idDiv3 value="3" style="display: none;">
+                3
+                
         </div>
-        <div class="carta" #id5 (click)="alternarClass($event)">
-                <label for="carta5" class="acordeon__titulo">5
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv5)">
+                <input type="text" name="" #idDiv5 value="5" style="display: none;">
+                5
+                
         </div>
-        <div class="carta" #id8 (click)="alternarClass($event)">
-                <label for="carta8" class="acordeon__titulo">8
-               </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv8)">
+                <input type="text" name="" #idDiv8 value="8" style="display: none;">
+                8
+               
         </div>
-        <div class="carta" #id13 (click)="alternarClass($event)">
-                <label for="carta13" class="acordeon__titulo">13
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv13)">
+                <input type="text" name="" #idDiv13 value="13" style="display: none;">
+                13
+                
         </div>
-        <div  class="carta" #id20 (click)="alternarClass($event)">
-                <label for="carta20" class="acordeon__titulo">20
-              </label>
+        <div  class="carta" #idDiv  (click)="alternarClass($event, idDiv20)">
+                <input type="text" name="" #idDiv20 value="20" style="display: none;">
+                20
+              
         </div>
-        <div  class="carta" #id40 (click)="alternarClass($event)">
-                <label for="carta40" class="acordeon__titulo">40
-                </label>
+        <div  class="carta" #idDiv  (click)="alternarClass($event, idDiv40)">
+                <input type="text" name="" #idDiv40 value="40" style="display: none;">
+                40
+                
         </div>
-        <div class="carta" #id100 (click)="alternarClass($event)">
-                <label for="carta100" class="acordeon__titulo">100
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDiv100)">
+                <input type="text" name="" #idDiv100 value="100" style="display: none;">
+                100
+                
         </div>
 
-        <div class="carta" #consulta (click)="alternarClass($event)">
-                <label for="cartacuestion" class="acordeon__titulo">?
-                </label>
+        <div class="carta" #idDiv  (click)="alternarClass($event, idDivcuestion)">
+                <input type="text" name="" #idDivcuestion value="cuestion" style="display: none;">
+                ?
+                
         </div>
         <div class="row">
                 <button (click)="navegarStopVoting()" type="button" class="btn btn-primary btn-lg ml-1">Start voting</button>
