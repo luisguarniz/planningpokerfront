@@ -15,7 +15,7 @@ export class RoomService {
  //para hacer llamadas a una API REST y obtener resultados de la misma. ... Devuelve cold observables.
   constructor(private _http : HttpClient) { }
 
-  getRoom(NameUsuario:any , AdminUserCode:any, token:any): Observable<Room[]>{
+  getRoom(NameUsuario:any , idAdmin:any, token:any): Observable<Room[]>{
 
     const url = `${environment.urlBase}api/Room/makeRoom`;
 
@@ -25,7 +25,7 @@ export class RoomService {
 
     const data = {
       NameUsuario,
-      AdminUserCode,
+      idAdmin,
       token
     };
     

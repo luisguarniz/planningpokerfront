@@ -23,10 +23,12 @@ export class InicioComponent implements OnInit {
   invited;
   rooms ;
   AdminUserCode: any;
+  AdmId: any;
   cookieExists: boolean;
   cookieAdminUserCode:any;
   existOrNotCookie:any;
-  NameUsuario:any;
+  NameUsuario:string ;
+  password:any = '12345678'; //password fijo
   admCode:any;
   NameInvited:any;
 
@@ -43,9 +45,6 @@ export class InicioComponent implements OnInit {
     this.colorCheck = true;
   }
 
-  navegarInicioHost(){
-    this.router.navigate(["/hostStart"]);
-  }
   navegarStartInvited(){
     this.router.navigate(['/startInvited']);
   }
@@ -61,26 +60,30 @@ export class InicioComponent implements OnInit {
      });
     }
 
-    this.userservice.getUser().subscribe( response =>{
-      console.log(response);
+      this.userservice.getUser().subscribe( response =>{
        this.user = response;
        this.dataservice.Servicesuser = this.user;
        this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
-       this.AdminUserCode = this.dataservice.Servicesuser.AdminUserCode;
-       this.token = this.dataservice.Servicesuser.token;
-       
-       //ya teniendo los datos del Host entonces creamos la sala
-       this._RoomService.getRoom(this.dataservice.Servicesuser.NameUsuario , this.dataservice.Servicesuser.AdminUserCode, this.dataservice.Servicesuser.token).subscribe( response =>{
-        console.log(response);
-        this.rooms = response;
+
+       this.userservice.login(this.NameUsuario,this.password).subscribe(response =>{
+
+        this.user = response;
+        
+               //ya teniendo los datos del Host entonces creamos la sala hay un objeto dentro del JSON por eso se accede de esta manera
+       this._RoomService.getRoom(this.user.user.NameUsuario, this.user.user.id, this.user.user.token )
+       .subscribe( response =>{
+       this.rooms = response;
         this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
-        this.cookie.set('AdminUserCode',JSON.stringify(this.dataservice.Servicesrooms.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
+        this.cookie.set('AdminUserCode',JSON.stringify(this.dataservice.Servicesuser.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
         this.cookie.set('token',JSON.stringify(this.dataservice.Servicesrooms.token));
-        this.router.navigate(["/hostStart"]);
+       this.router.navigate(["/hostStart"]);
       
       });
-      });
-  }
+     });
+
+       });
+
+}
   comprobarCookie(){
     this.cookieExists = this.cookie.check('AdminUserCode'); //preguntar si esta cookie existe
     return this.cookieExists;

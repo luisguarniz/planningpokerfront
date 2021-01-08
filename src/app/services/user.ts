@@ -1,6 +1,9 @@
 export interface User {
 
+    id?: string;
+    AdminUserCode? : string ;
     NameUsuario : string ;
-    AdminUserCode : string ;
-    token : string ;
+    password? : string;
+    token?: string ;
+
 }
