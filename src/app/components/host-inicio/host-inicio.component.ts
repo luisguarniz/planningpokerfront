@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
+import { User } from 'src/app/services/user';
 
 @Component({
   selector: 'app-host-inicio',
@@ -9,6 +10,9 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class HostInicioComponent implements OnInit {
   private echo ;
+
+  userList: User[] = [];
+
   constructor( public messageService :MessageService) 
   { 
    this.echo = messageService.websocket();
@@ -19,6 +23,21 @@ export class HostInicioComponent implements OnInit {
     .listen('messageTest', (resp) => {//.MessageEvent
       console.log(resp);
     });
+
+    this.echo.join('channel-test')
+    .here((users) => {
+        console.log(users);
+        this.userList = users;
+    })
+    .joining((user) => {
+        this.userList.push(user);
+    })
+    .leaving((user) => {
+        this.userList = this.userList.filter((userL) => {
+          return user.id !== userL.id;
+        });
+    });
+
   }
 
 }

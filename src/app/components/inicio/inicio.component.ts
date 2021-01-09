@@ -91,13 +91,21 @@ export class InicioComponent implements OnInit {
   }
 
   
-manageInvited(){
-      this.invitedservice.getInvited().subscribe( response =>{
-        console.log(response);
-      this.invited = response;
-      this.dataservice.Serviceinvited = this.invited;
-      console.log(this.dataservice.Serviceinvited)
-      this.router.navigate(["/hostStart"]);
-  })
+       manageInvited(){
+
+  this.invitedservice.getInvited().subscribe( response =>{
+    this.user = response;
+    this.dataservice.Servicesuser = this.user;
+    this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
+
+    this.userservice.login(this.NameUsuario,this.password).subscribe( (response:any) =>{
+     this.cookie.set('token',response.token);
+     this.cookie.set('user',JSON.stringify(response.user));
+     this.user = response;
+     
+  });
+  this.router.navigate(["/hostStart"]);
+  console.log(this.user);
+    });
 }
 }

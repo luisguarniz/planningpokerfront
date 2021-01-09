@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { User } from 'src/app/services/user';
 
 @Component({
   selector: 'app-participants',
@@ -7,6 +8,8 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./participants.component.css']
 })
 export class ParticipantsComponent implements OnInit {
+
+  @Input() userList: User[] = [];
  public invitedName? = "-";
  public hostName = "*";
 
