@@ -33,9 +33,9 @@ export class RoomService {
     return this._http.post<Room[]>(url,data,{headers}); //este return devuelve lo que obtuvo el get de HttpClient
   }
 
-  desactivateRoom(id:any): Observable<any>{
-    const url = `${environment.urlBase}api/Room/deactivateRoom`;
-    return this._http.put(url,id);//revisar estos conceptos. por que angular seguro no deja poner como argumento un id cuando es de tipo get
+  desactivateRoom(idAdmin:any): Observable<any>{
+    const url = `${environment.urlBase}api/Room/desactivateRoom`;
+    return this._http.put<any>(url,idAdmin);
   }
 
 }

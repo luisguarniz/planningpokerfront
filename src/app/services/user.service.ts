@@ -12,9 +12,9 @@ export class UserService {
 
   constructor(private __http : HttpClient) { }
 
-  getUser(): Observable<User[]>{
+  getUser(){
    const url = `${environment.urlBase}api/User/makeUser`;
-   return this.__http.get<User[]>(url);//<User[]> indica que el get (osea lo que traiga del backend) va ser de tipo User
+   return this.__http.get(url);//<User[]> indica que el get (osea lo que traiga del backend) va ser de tipo User
 }
 
   login(NameUsuario:string , password:string){

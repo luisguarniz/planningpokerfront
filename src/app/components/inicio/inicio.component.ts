@@ -20,17 +20,17 @@ export class InicioComponent implements OnInit {
   token : any;
   echo : Echo;
   user ;
+  userC;
   invited;
   rooms ;
   AdminUserCode: any;
   AdmId: any;
   cookieExists: boolean;
-  cookieAdminUserCode:any;
+  cookieidAdmin:any;
   existOrNotCookie:any;
   NameUsuario:string ;
   password:any = '12345678'; //password fijo
   admCode:any;
-  NameInvited:any;
 
   public _prevSelected: any;
   public colorCheck;
@@ -41,8 +41,9 @@ export class InicioComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log("mensaje al cargar");
     this.colorCheck = true;
+    this.cookieExists = this.cookie.check('idAdmin');
+    console.log(this.cookieExists);
   }
 
   navegarStartInvited(){
@@ -54,29 +55,32 @@ export class InicioComponent implements OnInit {
     this.existOrNotCookie = this.comprobarCookie();
     
     if(this.existOrNotCookie){
-      this.cookieAdminUserCode = this.cookie.get('AdminUserCode');
-     this._RoomService.desactivateRoom(this.cookieAdminUserCode).subscribe(response=>{
+      this.cookieidAdmin = this.cookie.get('idAdmin');
+       console.log("cookieidAdmin"+ this.cookieidAdmin);
+
+     this._RoomService.desactivateRoom(this.cookieidAdmin).subscribe( response =>{
        // respose responde null por que no envio nada desde LARAVEL
      });
     }
 
       this.userservice.getUser().subscribe( response =>{
-       this.user = response;
-       this.dataservice.Servicesuser = this.user;
-       this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
+       this.userC = response;
+      // this.dataservice.Servicesuser = this.user;
+      // this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
 
-       this.userservice.login(this.NameUsuario,this.password).subscribe( (response:any) =>{
+      //el password siempre es 12345678
+       this.userservice.login(this.userC.user.NameUsuario,this.password).subscribe( (response:any) =>{
         this.cookie.set('token',response.token);
         this.cookie.set('user',JSON.stringify(response.user));
         this.user = response;
-        
+        console.log(this.user);
                //ya teniendo los datos del Host entonces creamos la sala hay un objeto dentro del JSON por eso se accede de esta manera
        this._RoomService.getRoom(this.user.user.NameUsuario, this.user.user.id, this.user.user.token )
        .subscribe( response =>{
+         console.log("el id que mande a crear el room es:" + this.user.user.id);
        this.rooms = response;
         this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
-        this.cookie.set('AdminUserCode',JSON.stringify(this.dataservice.Servicesuser.AdminUserCode));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
-        //this.cookie.set('token',JSON.stringify(this.dataservice.Servicesrooms.token));
+        this.cookie.set('idAdmin',JSON.stringify(this.rooms.idAdmin));//creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
        this.router.navigate(["/hostStart"]);
       
       });
@@ -86,7 +90,7 @@ export class InicioComponent implements OnInit {
 
 }
   comprobarCookie(){
-    this.cookieExists = this.cookie.check('AdminUserCode'); //preguntar si esta cookie existe
+    this.cookieExists = this.cookie.check('idAdmin'); //preguntar si esta cookie existe
     return this.cookieExists;
   }
 
@@ -95,17 +99,16 @@ export class InicioComponent implements OnInit {
 
   this.invitedservice.getInvited().subscribe( response =>{
     this.user = response;
-    this.dataservice.Servicesuser = this.user;
-    this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
+ //   this.dataservice.Servicesuser = this.user;
+ //   this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
 
-    this.userservice.login(this.NameUsuario,this.password).subscribe( (response:any) =>{
+    this.userservice.login(this.user.user.NameUsuario,this.password).subscribe( (response:any) =>{
      this.cookie.set('token',response.token);
      this.cookie.set('user',JSON.stringify(response.user));
      this.user = response;
      
   });
-  this.router.navigate(["/hostStart"]);
-  console.log(this.user);
+  this.router.navigate(["/startInvited"]);
     });
 }
 }

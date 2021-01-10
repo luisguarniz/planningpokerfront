@@ -24,6 +24,7 @@ export class HostInicioComponent implements OnInit {
       console.log(resp);
     });
 
+    //manejo de los usuarios que se unen a nuestro canal
     this.echo.join('channel-test')
     .here((users) => {
         console.log(users);
