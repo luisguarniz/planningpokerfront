@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UnblockVotingService } from 'src/app/services/unblock-voting.service';
@@ -10,17 +10,19 @@ import { UnblockVotingService } from 'src/app/services/unblock-voting.service';
   styleUrls: ['./cartas.component.css']
 })
 export class CartasComponent implements OnInit {
-
 @ViewChildren ("idDiv") idDiv : QueryList<any>;//se le puso <Any> por que estaba con <ngmodel> y no se podia usar .nativeElement en el foreach
+@Output() showParticipants = new EventEmitter<boolean>();
+@Output() noneParticipants = new EventEmitter<string>();
+
   estaCheckeado = true;
   cardValue;
-
  msgUnblock = false;
+ message:boolean = true;
+ moveParticipants = '1';
  
   constructor(private router:Router, private elemento:ElementRef, private render: Renderer2, private unblockvoting : UnblockVotingService) { }
 
   ngOnInit(): void {
-
   }
 
   alternarClass(event,id){
@@ -36,6 +38,9 @@ export class CartasComponent implements OnInit {
   }
 
   onblock(){
+
+    this.noneParticipants.emit(this.moveParticipants);
+    this.showParticipants.emit(this.message);//enviamos true para mostrar en el componente padre el boton y los participantes
 
     this.unblockvoting.unblockCarts(this.msgUnblock)
     .subscribe( resp =>{

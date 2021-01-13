@@ -2,3 +2,10 @@
     display: flex;
     justify-content: space-between;
     }
+
+.div-participants-voting{
+ display: flex;
+ justify-content: center;
+ align-items: center;   
+ text-align: center;
+}

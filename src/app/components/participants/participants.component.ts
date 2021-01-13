@@ -12,6 +12,8 @@ export class ParticipantsComponent implements OnInit {
 
   meName;
   @Input() userList: User[] = [];
+  @Input() starVoting: boolean; // esta variable viajo desde el componente hermano cartas al presionar el boton
+  @Input() moveParticipants: string; // esta variable viajo desde el componente hermano cartas al presionar el boton
 
   constructor(private cookie : CookieService) { 
 

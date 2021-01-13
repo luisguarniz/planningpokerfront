@@ -1,8 +1,14 @@
 <div class="container">
     <div class="row col-md-12">
         <app-cabecera></app-cabecera>
-        <app-participants [userList]="userList"></app-participants>
+        <app-participants [userList]="userList" [starVoting]="starVoting" [moveParticipants]="moveParticipants"></app-participants>
     </div>
 
-<app-cartas class="row col-md-12"></app-cartas>
+<div class="row col-md-12 div-participants-voting" [ngStyle]="{'display':starVoting ? 'block': 'none'}">
+    <app-participants-voting [userList]="userList"></app-participants-voting>
+    <app-btn-stop-voting></app-btn-stop-voting>
+</div>
+
+<!--showParticipants es elevento creado en app cartas q emite hacia el componente padre host-inicio-->
+<app-cartas class="row col-md-12" (showParticipants)="procesaPropagar($event)" (noneParticipants)="processMoveParticipants($event)"></app-cartas>
 </div>

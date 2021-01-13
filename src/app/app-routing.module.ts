@@ -6,6 +6,7 @@ import { HostResultsVotingComponent } from './components/host-results-voting/hos
 import { HostVotingComponent } from './components/host-voting/host-voting.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { InvitedStartComponent } from './components/invited-start/invited-start.component';
+import { ParticipantsVotingComponent } from './components/participants-voting/participants-voting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full'},
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'hostStart', component: HostInicioComponent },
   { path: 'hostVoting', component: HostVotingComponent},
   { path: 'resultsVoting', component: HostResultsVotingComponent},
-  { path: 'startInvited', component: InvitedStartComponent}
+  { path: 'startInvited', component: InvitedStartComponent},
+  { path: 'participantsvoting', component: ParticipantsVotingComponent}
 ];
 
 @NgModule({

@@ -12,14 +12,25 @@ export class HostInicioComponent implements OnInit {
   private echo ;
   
   userList: User[] = [];
+  starVoting: boolean = false;
+  moveParticipants : string = '0';
+
  // roomCode:any; //enviar este codigo para distinguir las salas creadas
   constructor( public messageService :MessageService, public dataservice : DataService) 
   { 
    this.echo = messageService.websocket();
   // this.roomCode = dataservice.Servicesrooms.RoomCode;
   }
+  processMoveParticipants(msg){
+    this.moveParticipants = msg;
+  }
+
+  procesaPropagar(mensaje) {
+    this.starVoting = mensaje;
+  }
 
   ngOnInit(): void {
+    
     this.echo.private('channel-test') //  this.echo.private(`channel-test.${this.roomCode}`)
     .listen('messageTest', (resp) => {
       console.log(resp);
