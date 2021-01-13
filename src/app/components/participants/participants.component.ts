@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { DataService } from 'src/app/services/data.service';
 import { User } from 'src/app/services/user';
 
@@ -9,13 +10,15 @@ import { User } from 'src/app/services/user';
 })
 export class ParticipantsComponent implements OnInit {
 
+  meName;
   @Input() userList: User[] = [];
 
-  constructor() { 
+  constructor(private cookie : CookieService) { 
 
   }
 
   ngOnInit(): void {
+    this.meName = this.cookie.get('NameUsuario');
   }
 
 }

@@ -43,7 +43,6 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.colorCheck = true;
     this.cookieExists = this.cookie.check('idAdmin');
-    console.log(this.cookieExists);
   }
 
   navegarStartInvited(){
@@ -56,7 +55,6 @@ export class InicioComponent implements OnInit {
     
     if(this.existOrNotCookie){
       this.cookieidAdmin = this.cookie.get('idAdmin');
-       console.log("cookieidAdmin"+ this.cookieidAdmin);
 
      this._RoomService.desactivateRoom(this.cookieidAdmin).subscribe( response =>{
        // respose responde null por que no envio nada desde LARAVEL
@@ -73,7 +71,7 @@ export class InicioComponent implements OnInit {
         this.cookie.set('token',response.token);
         this.cookie.set('user',JSON.stringify(response.user));
         this.user = response;
-        console.log(this.user);
+      
                //ya teniendo los datos del Host entonces creamos la sala hay un objeto dentro del JSON por eso se accede de esta manera
        this._RoomService.getRoom(this.user.user.NameUsuario, this.user.user.id, this.user.user.token )
        .subscribe( response =>{
@@ -99,9 +97,12 @@ export class InicioComponent implements OnInit {
 
   this.invitedservice.getInvited().subscribe( response =>{
     this.user = response;
- //   this.dataservice.Servicesuser = this.user;
- //   this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
 
+    this.cookie.set('NameUsuario',this.user.user.NameUsuario);
+    this.cookie.set('token',this.user.token);// creando un token aca se soluciona el bug de autenticar la primera vez que se une
+    
+
+             //el password siempre es 12345678
     this.userservice.login(this.user.user.NameUsuario,this.password).subscribe( (response:any) =>{
      this.cookie.set('token',response.token);
      this.cookie.set('user',JSON.stringify(response.user));

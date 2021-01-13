@@ -24,3 +24,7 @@
     position: relative;
     left: 20px;
 }
+
+.div-block{
+    display:initial;
+}

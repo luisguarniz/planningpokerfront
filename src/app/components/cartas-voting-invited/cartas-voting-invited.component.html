@@ -1,13 +1,70 @@
-<div class="carta">0</div> 
-<div class="carta">1/2</div>
-<div class="carta">1</div>
-<div class="carta">2</div>
-<div class="carta">3</div>
-<div class="carta">5</div>
-<div class="carta">8</div>
-<div class="carta">13</div>
-<div class="carta">20</div>
-<div class="carta">40</div>
-<div class="carta">100</div>
-<div class="carta">?</div>
-<p>Cartas invitado</p>
+
+        <div class="carta" #idDiv (click)="alternarClass($event, idDiv0)">
+            <input type="text" name="" #idDiv0 value="0" style="display: none;">
+            0
+    </div>
+
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv05)">
+            <input type="text" name="" #idDiv05 value="0.5" style="display: none;">
+            0.5
+            
+    </div>
+
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv1)">
+            <input type="text" name="" #idDiv1 value="1" style="display: none;">
+            1
+            
+    </div>
+    
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv2)">
+            <input type="text" name="" #idDiv2 value="2" style="display: none;">
+            2
+            
+    </div>
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv3)">
+            <input type="text" name="" #idDiv3 value="3" style="display: none;">
+            3
+            
+    </div>
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv5)">
+            <input type="text" name="" #idDiv5 value="5" style="display: none;">
+            5
+            
+    </div>
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv8)">
+            <input type="text" name="" #idDiv8 value="8" style="display: none;">
+            8
+           
+    </div>
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv13)">
+            <input type="text" name="" #idDiv13 value="13" style="display: none;">
+            13
+            
+    </div>
+    <div  class="carta" #idDiv  (click)="alternarClass($event, idDiv20)">
+            <input type="text" name="" #idDiv20 value="20" style="display: none;">
+            20
+          
+    </div>
+    <div  class="carta" #idDiv  (click)="alternarClass($event, idDiv40)">
+            <input type="text" name="" #idDiv40 value="40" style="display: none;">
+            40
+            
+    </div>
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDiv100)">
+            <input type="text" name="" #idDiv100 value="100" style="display: none;">
+            100
+            
+    </div>
+
+    <div class="carta" #idDiv  (click)="alternarClass($event, idDivcuestion)">
+            <input type="text" name="" #idDivcuestion value="cuestion" style="display: none;">
+            ?
+            
+    </div>
+    <div class="row">
+            <button (click)="presionar()">Voting</button>
+            <button type="button" class="btn btn-warning btn-lg">Feedback</button>
+    </div>
+
+

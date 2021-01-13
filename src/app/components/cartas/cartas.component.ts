@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UnblockVotingService } from 'src/app/services/unblock-voting.service';
 
 
 @Component({
@@ -14,7 +15,9 @@ export class CartasComponent implements OnInit {
   estaCheckeado = true;
   cardValue;
 
-  constructor(private router:Router, private elemento:ElementRef, private render: Renderer2) { }
+ msgUnblock = false;
+ 
+  constructor(private router:Router, private elemento:ElementRef, private render: Renderer2, private unblockvoting : UnblockVotingService) { }
 
   ngOnInit(): void {
 
@@ -28,10 +31,15 @@ export class CartasComponent implements OnInit {
     event.target.classList.toggle('colorAzul');
     console.log(id.value);
   }
-  navegarStopVoting(){
-    this.router.navigate(["/hostVoting"]);
-  }
   presionar(){
     console.log(this.cardValue);
+  }
+
+  onblock(){
+
+    this.unblockvoting.unblockCarts(this.msgUnblock)
+    .subscribe( resp =>{
+      console.log(resp);
+    })  
   }
 }

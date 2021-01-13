@@ -10,22 +10,22 @@ import { User } from 'src/app/services/user';
 })
 export class HostInicioComponent implements OnInit {
   private echo ;
-
+  
   userList: User[] = [];
-
-  constructor( public messageService :MessageService) 
+ // roomCode:any; //enviar este codigo para distinguir las salas creadas
+  constructor( public messageService :MessageService, public dataservice : DataService) 
   { 
    this.echo = messageService.websocket();
+  // this.roomCode = dataservice.Servicesrooms.RoomCode;
   }
 
   ngOnInit(): void {
-    this.echo.private('channel-test')
-    .listen('messageTest', (resp) => {//.MessageEvent
+    this.echo.private('channel-test') //  this.echo.private(`channel-test.${this.roomCode}`)
+    .listen('messageTest', (resp) => {
       console.log(resp);
     });
-
     //manejo de los usuarios que se unen a nuestro canal
-    this.echo.join('channel-test')
+    this.echo.join('channel-test')// this.echo.join(`channel-test.${this.roomCode}`)
     .here((users) => {
         console.log(users);
         this.userList = users;

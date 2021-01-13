@@ -7,10 +7,10 @@
 
         <div class="div-cartas">
             <app-cartas-voting-invited class="row col-md-12"></app-cartas-voting-invited>
-            <div class="div-boquearCartas"><!--[ngClass]="desactivar "esto va dentro del div. solo que esta causando problemas al iniciar la aplicacion"-->
-                <p>No se puede votar</p>
+            <div [ngClass]="ponerquitar ? 'div-boquearCartas':''">
+                No se puede votar
             </div>
         </div>
-        <button type="button" class="btn btn-primary btn-sm  btnhost">boton de Star Voting del Host</button><!--(click)="desactivar='d-none'"  "esto va dentro del div. solo que esta causando problemas al iniciar la aplicacion"-->
+        <button type="button" class="btn btn-primary btn-sm  btnhost">boton de Star Voting del Host</button>
     </div>
 </div>

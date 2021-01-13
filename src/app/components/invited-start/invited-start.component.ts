@@ -9,22 +9,29 @@ import { User } from 'src/app/services/user';
 })
 export class InvitedStartComponent implements OnInit {
   private echo ;
-
+  
+  ponerquitar;
   userList: User[] = [];
-
+  //roomCode: any;
   constructor( public messageService :MessageService) 
   { 
    this.echo = messageService.websocket();
   }
 
   ngOnInit(): void {
-    this.echo.private('channel-test')
-    .listen('messageTest', (resp) => {//.MessageEvent
-      console.log(resp);
-    });
 
+
+
+    this.ponerquitar = true;
+
+   this.echo.private(`channel-test`)// this.echo.private(`channel-test.${this.roomCode}`)
+    .listen('messageTest', (resp) => {
+      console.log(resp);
+      console.log(resp.message);
+      this.ponerquitar = resp.message;
+    });
     //manejo de los usuarios que se unen a nuestro canal
-    this.echo.join('channel-test')
+    this.echo.join(`channel-test`)// this.echo.join(`channel-test.${this.roomCode}`)
     .here((users) => {
         console.log(users);
         this.userList = users;
@@ -39,4 +46,6 @@ export class InvitedStartComponent implements OnInit {
     });
 
   }
+
+
 }
