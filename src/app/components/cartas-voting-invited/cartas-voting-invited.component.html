@@ -1,3 +1,5 @@
+<div class="row col-md-12 cartasVoting">
+
 
         <div class="carta" #idDiv (click)="alternarClass($event, idDiv0)">
             <input type="text" name="" #idDiv0 value="0" style="display: none;">
@@ -62,9 +64,10 @@
             ?
             
     </div>
-    <div class="row">
+    <div class=" btnsInvited">
+            <button type="button" class="btn btn-primary btn-sm  btnhost">boton de Star Voting del Host</button>
             <button (click)="presionar()">Voting</button>
             <button type="button" class="btn btn-warning btn-lg">Feedback</button>
     </div>
 
-
+</div>

@@ -16,9 +16,43 @@
     font-size: 50px;
     cursor: pointer;
 }
-.btn-warning {
-    position: relative;
-    float: left;
+
+.div-btnAbajo{
+display: flex;
+justify-content: space-between;
+}
+
+.colorAzul{
+    background-color: blue;
+}
+
+.primario{
+    background-color: red;
+}
+
+.div-btnAbajo{
+    display: flex;
+    justify-content: space-between;
+    }
+
+
+    .container{
+    
+    justify-content: center;
+}
+.carta{
+    margin-left: 5px;
+    margin-bottom: 5px;
+    height: 200px;
+    width: 150px;
+    background-color: #C4C4C4;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    font-size: 50px;
+    cursor: pointer;
 }
 .div-btnAbajo{
 display: flex;
@@ -37,3 +71,21 @@ justify-content: space-between;
     display: flex;
     justify-content: space-between;
     }
+
+
+    .cartasVoting{
+        position: relative;
+        margin-top: 10px;
+    }
+    .btnsInvited{
+        margin-left: 10px;
+    }
+
+
+
+
+
+
+
+
+    
