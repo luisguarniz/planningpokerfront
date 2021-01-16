@@ -11,5 +11,6 @@ export class DataService {
   Serviceinvited : Invited;
   Servicesrooms : Room;
   Servicesuser : User;
+  clave:string;
   constructor() { }
 }

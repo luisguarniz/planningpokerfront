@@ -11,10 +11,10 @@ import { ParticipantsVotingComponent } from './components/participants-voting/pa
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full'},
   { path: 'start', component: InicioComponent },
-  { path: 'hostStart', component: HostInicioComponent },
+  { path: 'hostStart/:room', component: HostInicioComponent },
   { path: 'hostVoting', component: HostVotingComponent},
   { path: 'resultsVoting', component: HostResultsVotingComponent},
-  { path: 'startInvited', component: InvitedStartComponent},
+  { path: 'startInvited/:room', component: InvitedStartComponent},
   { path: 'participantsvoting', component: ParticipantsVotingComponent}
 ];
 
