@@ -35,7 +35,10 @@ export class RoomService {
 
   desactivateRoom(idAdmin:any): Observable<any>{
     const url = `${environment.urlBase}api/Room/desactivateRoom`;
-    return this._http.put<any>(url,idAdmin);
+    const data = {
+      idAdmin
+    }
+    return this._http.put<any>(url,data);
   }
 
 }

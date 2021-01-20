@@ -10,7 +10,7 @@ export class UnblockVotingService {
 
   constructor(private http : HttpClient, private cookie:CookieService) { 
   }
-  unblockCarts(msgUnblock: Boolean, to: any, socketsID){
+  unblockCarts(msgUnblock: Boolean,codigoSesion:any,to: any, socketsID){
 
     const url = `${environment.urlBase}api/Message/unblock`;
     const headers = new HttpHeaders({  //la constante es importante que se llame headers por que asi pide HttpHeaders que sea
@@ -19,6 +19,7 @@ export class UnblockVotingService {
     });
     const data = {
       msgUnblock,
+      codigoSesion,
       to
     }
    return this.http.post(url, data, {headers});

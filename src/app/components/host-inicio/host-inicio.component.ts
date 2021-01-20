@@ -31,18 +31,13 @@ export class HostInicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    
-   // this.echo.private(`channel-test${this.dataservice.Servicesrooms.RoomCode}`)
-   //this.echo.private('channel-test')
    this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
     .listen('messageTest', (resp) => {
       console.log(resp);
     });
+
+
     //manejo de los usuarios que se unen a nuestro canal
-    
-  //  this.echo.join(`channel-test${this.dataservice.Servicesrooms.RoomCode}`)
-  //this.echo.join('channel-test')
   this.echo.join(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
     .here((users) => {
         console.log(users);

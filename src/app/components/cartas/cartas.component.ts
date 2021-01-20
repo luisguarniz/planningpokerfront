@@ -7,6 +7,7 @@ import { DataService } from 'src/app/services/data.service';
 import { MessageService } from 'src/app/services/message.service';
 import { UnblockVotingService } from 'src/app/services/unblock-voting.service';
 import { User } from 'src/app/services/user';
+import { VoteSessionService } from 'src/app/services/vote-session.service';
 
 
 @Component({
@@ -26,16 +27,23 @@ export class CartasComponent implements OnInit {
  moveParticipants = '1';
  echo: Echo;
  roomCode;
+ RoomID;
+ VotingSessionCode;
+ codigoSesion;
  
   constructor(private router:Router, 
     private elemento:ElementRef, 
     private render: Renderer2, 
     private unblockvoting : UnblockVotingService,
     private messageService : MessageService,
-    public dataservice : DataService)
+    public dataservice : DataService,
+    private votesession : VoteSessionService,
+    private cookie : CookieService
+    )
     { 
    this.echo = this.messageService.websocket();
    this.roomCode = dataservice.Servicesrooms.RoomCode; 
+   this.RoomID = dataservice.Servicesrooms.RoomID;
     }
 
   ngOnInit(): void {
@@ -54,13 +62,23 @@ export class CartasComponent implements OnInit {
   }
 
   onblock(){
-  const socketsID = this.echo.socketId();
-    this.noneParticipants.emit(this.moveParticipants);
-    this.showParticipants.emit(this.message);//enviamos true para mostrar en el componente padre el boton y los participantes
+    //enviar RoomID para que se cree una sesion de votacion
+    this.votesession.makeVotingSession(this.RoomID,this.cookie.get('cookie'))
+    .subscribe(response =>{
+      this.VotingSessionCode = response;
+      this.codigoSesion = this.VotingSessionCode.VotingSessionCode;
 
-    this.unblockvoting.unblockCarts(this.msgUnblock, this.roomCode, socketsID)
-    .subscribe( resp =>{
-      console.log(resp);
-    })  
+
+
+      const socketsID = this.echo.socketId();
+      this.noneParticipants.emit(this.moveParticipants);
+      this.showParticipants.emit(this.message);//enviamos true para mostrar en el componente padre el boton y los participantes
+  
+      this.unblockvoting.unblockCarts(this.msgUnblock,this.codigoSesion,this.roomCode, socketsID)
+      .subscribe( resp =>{
+        console.log(resp);
+      })  
+    })
+
   }
 }

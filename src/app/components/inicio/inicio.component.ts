@@ -29,7 +29,7 @@ export class InicioComponent implements OnInit {
   NameUsuario: string;
   password: any = '12345678'; //password fijo
   admCode: any;
-  idRoom;
+  idRoom; //esta variable toma el valor del input text
 
   public _prevSelected: any;
   public colorCheck;
@@ -107,6 +107,7 @@ export class InicioComponent implements OnInit {
     this.dataservice.clave = this.idRoom;
     this.invitedservice.getInvited().subscribe((response) => {
       this.user = response;
+      this.dataservice.Serviceinvited = this.user.user;
 
       this.cookie.set('NameUsuario', this.user.user.NameUsuario);
       this.cookie.set('token', this.user.token); // creando un token aca se soluciona el bug de autenticar la primera vez que se une

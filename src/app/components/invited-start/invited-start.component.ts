@@ -13,7 +13,9 @@ export class InvitedStartComponent implements OnInit {
   private echo;
 
   ponerquitar;
+  VotingSessionCode
   userList: User[] = [];
+
   constructor(
     public messageService: MessageService,
     public dataservice: DataService,
@@ -30,14 +32,12 @@ export class InvitedStartComponent implements OnInit {
     // this.echo.private(`channel-test${this.dataservice.clave}`)
        this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
        .listen('messageTest', (resp) => {
-      console.log(resp);
-      console.log(resp.message);
-      this.ponerquitar = resp.message;
+       this.VotingSessionCode = resp.response.codigoSesion
+       console.log(this.VotingSessionCode);
+       this.ponerquitar = resp.response.message;
     });
+    
     //manejo de los usuarios que se unen a nuestro canal
-
-    // this.echo.join(`channel-test${this.dataservice.clave}`)
-    //this.echo.join('channel-test')
     this.echo.join(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
       .here((users) => {
         console.log(users);
