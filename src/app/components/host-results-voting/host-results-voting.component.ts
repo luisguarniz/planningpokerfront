@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-host-results-voting',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HostResultsVotingComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(
+  ) { 
   }
 
+  ngOnInit(): void {
+
+}
 }

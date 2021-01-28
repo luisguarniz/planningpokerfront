@@ -19,6 +19,7 @@ export class CartasComponent implements OnInit {
 @ViewChildren ("idDiv") idDiv : QueryList<any>;//se le puso <Any> por que estaba con <ngmodel> y no se podia usar .nativeElement en el foreach
 @Output() showParticipants = new EventEmitter<boolean>();
 @Output() noneParticipants = new EventEmitter<string>();
+@Input() mostrarDivCartas: boolean;
 
   estaCheckeado = true;
   cardValue;
@@ -49,26 +50,15 @@ export class CartasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  alternarClass(event,id){
-    this.idDiv.forEach(element => { 
-      this.render.removeClass(element.nativeElement, "colorAzul");
-      console.log(element);
-    });
-    event.target.classList.toggle('colorAzul');
-    console.log(id.value);
-  }
-  presionar(){
-    console.log(this.cardValue);
-  }
-
+  //creo la votacion. Debo cambiar el nombre de esta funcion para que indique que es el proceso de crear votacion
   onblock(){
     //enviar RoomID para que se cree una sesion de votacion
     this.votesession.makeVotingSession(this.RoomID,this.cookie.get('cookie'))
     .subscribe(response =>{
       this.VotingSessionCode = response;
       this.codigoSesion = this.VotingSessionCode.VotingSessionCode;
-
-
+      this.dataservice.VotingSessionCode = this.VotingSessionCode.VotingSessionCode;//guardo el codigo de session para usarlo en la consulta de los que an botado
+    
 
       const socketsID = this.echo.socketId();
       this.noneParticipants.emit(this.moveParticipants);

@@ -64,7 +64,7 @@ justify-content: space-between;
 }
 
 .primario{
-    background-color: red;
+    background-color: #C4C4C4;
 }
 
 .div-btnAbajo{
@@ -80,7 +80,9 @@ justify-content: space-between;
     .btnsInvited{
         margin-left: 10px;
     }
-
+.colorPlomo{
+    background-color: #C4C4C4;
+}
 
 
 

@@ -9,6 +9,7 @@ import { User } from 'src/app/services/user';
 export class ParticipantsVotingComponent implements OnInit {
 
   @Input() userList: User[] = [];
+  showIcon : boolean = true;
   constructor() { }
 
   ngOnInit(): void {

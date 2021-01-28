@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row col-md-12">
-    <!--   <app-cabecera></app-cabecera>--> 
+    <app-cabecera-invited></app-cabecera-invited>
         <app-participants [userList]="userList"></app-participants>
     </div>
     <div>
 
         <div class="div-cartas">
             <app-cartas-voting-invited class="row col-md-12" [VotingSessionCode]="VotingSessionCode"></app-cartas-voting-invited>
-            <div [ngClass]="ponerquitar ? 'div-boquearCartas':''">
+            <div class="div-boquearCartas" *ngIf="ponerquitar">
                 
             </div>
         </div>

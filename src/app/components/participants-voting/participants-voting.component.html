@@ -1,6 +1,6 @@
 <div class="div-participants-voting">
     <a *ngFor="let user of userList">
 
-        <h6 *ngIf="user.isInvited=='1'">{{user.NameUsuario}}</h6>
+        <h6 *ngIf="user.isInvited=='1'">{{user.NameUsuario}}<i class="far fa-clock" [ngStyle]="{'display':showIcon ? 'inlineblock': 'none'}"></i><i class="far fa-thumbs-up" [ngStyle]="{'display':showIcon ? 'none': 'inlineblock'}"></i></h6>
     </a>
 </div>

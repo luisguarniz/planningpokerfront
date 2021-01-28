@@ -1,5 +1,22 @@
 <div class="container">
     <div class="row col-md-10 div-btnAbajo">
-        <button (click)="navegarFinishVoting()" type="button" class="btn btn-primary btn-sm ml-1">Stop voting</button>
+        <button (click)="resultVoting()" type="button" class="btn btn-primary btn-sm ml-1">Stop voting</button>
     </div>
 </div>
+
+<table class="table">
+    <thead class="table-light">
+      <tr>
+       <th scope="col">Nombre</th>
+       <th scope="col">Votacion</th>
+       <th scope="col">Min/Max</th>
+     </tr>
+    </thead>
+    <tbody *ngIf="ListaVotos?.length > 0"><!---->
+       <tr *ngFor="let Voto of ListaVotos">
+          <th>{{Voto.NameUsuario}}</th>
+          <td>{{Voto.vote}}</td>
+          <td></td>
+        </tr>
+    </tbody>
+  </table>

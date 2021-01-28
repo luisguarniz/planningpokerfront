@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Room } from './room';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { InvitedRoom } from './invited-room';
 
 
 @Injectable({
@@ -39,6 +40,11 @@ export class RoomService {
       idAdmin
     }
     return this._http.put<any>(url,data);
+  }
+
+  getRoomInvited(RoomCode:any): Observable<InvitedRoom> {
+    const url = `${environment.urlBase}api/Room/getRoomInvited/`;
+    return this._http.get<InvitedRoom>(url + RoomCode);
   }
 
 }

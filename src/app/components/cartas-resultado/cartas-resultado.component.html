@@ -1,47 +1,16 @@
-
-         <div>
-            <div class="carta"><p>0</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>1</p></div> 
-         </div>
-         <div>
-            <div class="carta">
-               <div class="div-icon">
-                  <i class="fas fa-check"></i>
-                  <h6>1</h6>
-               </div> 
-               <p>8</p>
-            </div>    
-         </div>
-         <div>
-            <div class="carta"> <p>2</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>3</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>5</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>8</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>13</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>20</p></div> 
-         </div>
-         <div>
-            <div class="carta">
-               <div class="div-icon">
-                  <i class="fas fa-check"></i>
-                  <h6>3</h6>
-               </div><p>40</p></div>
-         </div>
-         <div>
-            <div class="carta"><p>100</p></div> 
-         </div>
-         <div>
-            <div class="carta"><p>?</p></div> 
-         </div>
+<table class="table">
+   <thead class="table-light">
+     <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Votacion</th>
+      <th scope="col">Min/Max</th>
+    </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let voto of ListaVotos">
+         <th>{{voto.UserID}}</th>
+         <td>{{voto.vote}}</td>
+         <td>{{voto}}</td>
+       </tr>
+   </tbody>
+ </table>

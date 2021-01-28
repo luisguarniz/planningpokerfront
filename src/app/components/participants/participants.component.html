@@ -2,7 +2,12 @@
     <h4>Participants</h4>
     <a *ngFor="let user of userList">
 
-        <h6 [ngStyle]="{'display': user.isInvited == moveParticipants ? 'none': 'block'}" [ngStyle]="{'display':user.isAdmin ? 'block': 'none'}" [ngStyle]="{'background-color':user.NameUsuario == meName ? '#B7B4FA': 'none'}">{{user.NameUsuario}}<i class="fas fa-star" *ngIf="user.isAdmin=='1'"></i></h6>
+        <h6 [ngStyle]="{'display': user.isInvited == moveParticipants ? 'none': 'block'}"
+         [ngStyle]="{'display':user.isAdmin ? 'block': 'none'}"
+          [ngStyle]="{'background-color':user.NameUsuario == meName ? '#B7B4FA': 'none'}">
+          {{user.NameUsuario}}
+          <i class="fas fa-star" *ngIf="user.isAdmin=='1'"></i>
+        </h6>
     </a>
 
     

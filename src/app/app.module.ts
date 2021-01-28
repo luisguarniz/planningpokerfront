@@ -22,6 +22,7 @@ import { CartasVotingInvitedComponent } from './components/cartas-voting-invited
 import { HttpClientModule } from '@angular/common/http'; //esto sirve para poder hacer llamadas al servidor
 import { FormsModule } from '@angular/forms';
 import { ParticipantsVotingComponent } from './components/participants-voting/participants-voting.component';
+import { CabeceraInvitedComponent } from './components/cabecera-invited/cabecera-invited.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ParticipantsVotingComponent } from './components/participants-voting/pa
     CartasResultadoComponent,
     InvitedStartComponent,
     CartasVotingInvitedComponent,
-    ParticipantsVotingComponent
+    ParticipantsVotingComponent,
+    CabeceraInvitedComponent
   ],
   imports: [
     BrowserModule,

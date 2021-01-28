@@ -13,7 +13,7 @@ export class InvitedStartComponent implements OnInit {
   private echo;
 
   ponerquitar;
-  VotingSessionCode
+  VotingSessionCode;
   userList: User[] = [];
 
   constructor(
@@ -25,17 +25,18 @@ export class InvitedStartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.dataservice.clave);
 
     this.ponerquitar = true;
 
     // this.echo.private(`channel-test${this.dataservice.clave}`)
        this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
        .listen('messageTest', (resp) => {
-       this.VotingSessionCode = resp.response.codigoSesion
-       console.log(this.VotingSessionCode);
-       this.ponerquitar = resp.response.message;
+       this.VotingSessionCode = resp.response.codigoSesion;
+        this.ponerquitar = resp.response.message;
+        console.log(this.VotingSessionCode);
     });
+
+
     
     //manejo de los usuarios que se unen a nuestro canal
     this.echo.join(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)

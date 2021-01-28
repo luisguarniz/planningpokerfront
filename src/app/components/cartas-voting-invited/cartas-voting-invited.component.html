@@ -1,7 +1,7 @@
 <div class="row col-md-12 cartasVoting">
 
 
-        <div class="carta" #idDiv (click)="alternarClass($event, idDiv0)">
+        <div class="carta" #idDiv (click)="alternarClass($event, idDiv0)" ><!--[ngClass]="ponerColorPlomo ? 'colorPlomo': ''"-->
             <input type="text" name="" #idDiv0 value="0" style="display: none;">
             0
     </div>
@@ -63,9 +63,6 @@
             <input type="text" name="" #idDivcuestion value="cuestion" style="display: none;">
             ?
             
-    </div>
-    <div class=" btnsInvited">
-            <button type="button" class="btn btn-warning btn-lg">Feedback</button>
     </div>
 
 </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Invited } from './invited';
+import { InvitedRoom } from './invited-room';
 import { Room } from './room';
 import { User } from './user';
 
@@ -13,5 +14,7 @@ export class DataService {
   Servicesuser : User;
   clave : string;
   VotingSessionCode : any;
+  VoteList : any;
+  InvitedRoom : InvitedRoom;
   constructor() { }
 }

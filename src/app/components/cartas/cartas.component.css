@@ -2,6 +2,14 @@
     
     justify-content: center;
 }
+.divCartas{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 .carta{
     margin-left: 5px;
     margin-bottom: 5px;
@@ -14,7 +22,6 @@
     justify-items: center;
     justify-content: center;
     font-size: 50px;
-    cursor: pointer;
 }
 .btn-warning {
     position: relative;

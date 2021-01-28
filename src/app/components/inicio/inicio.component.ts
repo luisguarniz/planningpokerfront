@@ -8,6 +8,7 @@ import { MessageService } from 'src/app/services/message.service';
 import Echo from 'laravel-echo';
 import { UserService } from 'src/app/services/user.service';
 import { InvitedService } from 'src/app/services/invited.service';
+import { InvitedRoom } from 'src/app/services/invited-room';
 
 @Component({
   selector: 'app-inicio',
@@ -30,6 +31,8 @@ export class InicioComponent implements OnInit {
   password: any = '12345678'; //password fijo
   admCode: any;
   idRoom; //esta variable toma el valor del input text
+  RoomNameI;
+  RoomCodeI;
 
   public _prevSelected: any;
   public colorCheck;
@@ -104,7 +107,13 @@ export class InicioComponent implements OnInit {
   }
 
   manageInvited() {
+    
+    this._RoomService.getRoomInvited(this.idRoom).subscribe((resp:InvitedRoom) => {
+      this.dataservice.InvitedRoom = resp;
+   });
+
     this.dataservice.clave = this.idRoom;
+
     this.invitedservice.getInvited().subscribe((response) => {
       this.user = response;
       this.dataservice.Serviceinvited = this.user.user;
@@ -120,6 +129,7 @@ export class InicioComponent implements OnInit {
           this.cookie.set('user', JSON.stringify(response.user));
           this.user = response;
         });
+        
       this.router.navigate([`/startInvited/${this.idRoom}`]);
     });
   }

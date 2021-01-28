@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-cartas-resultado',
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cartas-resultado.component.css']
 })
 export class CartasResultadoComponent implements OnInit {
-
-  constructor() { }
+ListaVotos;
+  constructor(
+    private dataservice : DataService
+  ) 
+  {
+    this.ListaVotos = this.dataservice.VoteList;
+   }
 
   ngOnInit(): void {
   }
