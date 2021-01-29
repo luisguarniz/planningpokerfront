@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class InvitedStartComponent implements OnInit {
   private echo;
 
-  ponerquitar;
   VotingSessionCode;
   userList: User[] = [];
 
@@ -26,15 +25,7 @@ export class InvitedStartComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.ponerquitar = true;
 
-    // this.echo.private(`channel-test${this.dataservice.clave}`)
-       this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
-       .listen('messageTest', (resp) => {
-       this.VotingSessionCode = resp.response.codigoSesion;
-        this.ponerquitar = resp.response.message;
-        console.log(this.VotingSessionCode);
-    });
 
 
     
