@@ -16,6 +16,7 @@ export class HostInicioComponent implements OnInit {
   starVoting: boolean = false;
   moveParticipants : string = '0';
   mostrarDivCartas : boolean = false;
+  ListaVotos: [];
 
  // roomCode:any; //enviar este codigo para distinguir las salas creadas
   constructor( public messageService :MessageService, public dataservice : DataService, private activatedRoute : ActivatedRoute) 
@@ -32,6 +33,10 @@ export class HostInicioComponent implements OnInit {
   }
   showDiv(mensajeEvento){
  this.mostrarDivCartas = mensajeEvento;
+  }
+
+  ShowListVotos(ListVotos){
+    this.ListaVotos = ListVotos;
   }
 
   ngOnInit(): void {

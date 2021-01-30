@@ -20,7 +20,9 @@ export class CartasComponent implements OnInit {
 @Output() showParticipants = new EventEmitter<boolean>();
 @Output() noneParticipants = new EventEmitter<string>();
 @Input() mostrarDivCartas: boolean;
-
+@Output() showDiv = new EventEmitter<boolean>();
+@Output() ListaVotosEmit = new EventEmitter<any>();
+ 
   estaCheckeado = true;
   cardValue;
  msgUnblock = false;
@@ -31,6 +33,10 @@ export class CartasComponent implements OnInit {
  RoomID;
  VotingSessionCode;
  codigoSesion;
+ OcultarBtn : boolean = true;
+ mostrarDiv : boolean = true;
+ ListaVotos;
+ msgtrue = true;
  
   constructor(private router:Router, 
     private elemento:ElementRef, 
@@ -39,12 +45,14 @@ export class CartasComponent implements OnInit {
     private messageService : MessageService,
     public dataservice : DataService,
     private votesession : VoteSessionService,
-    private cookie : CookieService
+    private cookie : CookieService,
+    private votesessionservice : VoteSessionService
     )
     { 
    this.echo = this.messageService.websocket();
    this.roomCode = dataservice.Servicesrooms.RoomCode; 
    this.RoomID = dataservice.Servicesrooms.RoomID;
+   this.ListaVotos = [];
     }
 
   ngOnInit(): void {
@@ -67,8 +75,29 @@ export class CartasComponent implements OnInit {
       this.unblockvoting.unblockCarts(this.msgUnblock,this.codigoSesion,this.roomCode, socketsID)
       .subscribe( resp =>{
         console.log(resp);
-      })  
-    })
+      });  
+    });
 
+    this.OcultarBtn = false;
+  }
+
+  resultVoting(){
+
+    this.showDiv.emit(this.mostrarDiv);
+    this.VotingSessionCode = this.dataservice.VotingSessionCode;
+    this.votesessionservice.getVotingSession(this.VotingSessionCode)
+    .subscribe((response) => {
+    this.ListaVotos = response; 
+    this.ListaVotosEmit.emit(this.ListaVotos);
+    });
+
+    const socketsID = this.echo.socketId();
+    
+    this.votesessionservice.limpiarCartas(this.msgtrue,this.roomCode, socketsID)
+    .subscribe( resp =>{
+      console.log(resp);
+    }); 
+
+    this.OcultarBtn = true;
   }
 }

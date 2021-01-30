@@ -65,8 +65,8 @@
 </div>
  
         <div class="row">
-                <button (click)="onblock()" type="button" class="btn btn-primary btn-lg ml-1">Start voting</button>
-        <!--       <button (click)="presionar()">Voting</button>          --> 
+                <button (click)="onblock()" type="button" class="btn btn-primary btn-lg ml-1" *ngIf="OcultarBtn==true">Start voting</button>
+                <button  (click)="resultVoting()" type="button" class="btn btn-primary btn-lg ml-1" *ngIf="OcultarBtn==false">Stop voting</button> 
                 <button type="button" class="btn btn-warning btn-lg">Feedback</button>
         </div>
 
