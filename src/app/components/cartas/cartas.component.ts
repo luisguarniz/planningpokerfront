@@ -54,6 +54,7 @@ export class CartasComponent implements OnInit {
   ListaVotos;
   msgtrue = true;
   listParticipants:[] = [];
+  showdivResultVotacion = false;
 
   constructor(
     private router: Router,
@@ -77,7 +78,7 @@ export class CartasComponent implements OnInit {
 
   //creo la votacion. Debo cambiar el nombre de esta funcion para que indique que es el proceso de crear votacion
   onblock() {
-
+    this.showdivResultVotacion = false;
     
 
     //enviar RoomID para que se cree una sesion de votacion
@@ -89,9 +90,6 @@ export class CartasComponent implements OnInit {
         this.dataservice.VotingSessionCode = this.VotingSessionCode.VotingSessionCode; //guardo el codigo de session para usarlo en la consulta de los que an botado
 
         this.consultarVotos(this.codigoSesion);
-        //console.log("listParticipants");
-        //console.log(this.listParticipants);
-        
 
         const socketsID = this.echo.socketId();
         this.noneParticipants.emit(this.moveParticipants);
@@ -123,7 +121,7 @@ export class CartasComponent implements OnInit {
       .subscribe((response) => {
         this.ListaVotos = response;
         console.log(response);
-        this.ListaVotosEmit.emit(this.ListaVotos);
+        //this.ListaVotosEmit.emit(this.ListaVotos);
       });
 
     const socketsID = this.echo.socketId();
@@ -136,6 +134,7 @@ export class CartasComponent implements OnInit {
 
     this.OcultarBtn = true;
     this.mostrarDivCartas = true;
+    this.showdivResultVotacion = true;
   }
 
   consultarVotos(VotingSessionCode) {//poniendo el metodo directo arriba si devuelve la respuesta del servidor

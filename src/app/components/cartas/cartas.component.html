@@ -64,11 +64,14 @@
         </div>
 
 </div>
- 
-        <div class="row">
+<div class="container" *ngIf="showdivResultVotacion">
+        <app-btn-stop-voting  [ListaVotos]="ListaVotos"></app-btn-stop-voting>
+</div>
+
+        <div class="container">
                 <button (click)="onblock()" type="button" class="btn btn-primary btn-lg ml-1" *ngIf="OcultarBtn==true">Start voting</button>
                 <button  (click)="resultVoting()" type="button" class="btn btn-primary btn-lg ml-1" *ngIf="OcultarBtn==false">Stop voting</button> 
-                <button type="button" class="btn btn-warning btn-lg">Feedback</button>
+                <!--<button type="button" class="btn btn-warning btn-lg">Feedback</button>-->
         </div>
 
 

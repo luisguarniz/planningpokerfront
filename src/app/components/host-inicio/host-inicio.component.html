@@ -4,11 +4,6 @@
         <app-participants [userList]="userList" [starVoting]="starVoting" [moveParticipants]="moveParticipants"></app-participants>
     </div>
 
-<div class="row col-md-12 div-participants-voting" [ngStyle]="{'display':starVoting ? 'block': 'none'}">
-    
-    <app-btn-stop-voting  [ListaVotos]="ListaVotos"></app-btn-stop-voting> <!--este componente no contiene el boton de stop voting-->
-</div>
-
 <!--showParticipants es elevento creado en app cartas q emite hacia el componente padre host-inicio-->
-<app-cartas [userList]="userList" [mostrarDivCartas]="mostrarDivCartas" class="row col-md-12" (showParticipants)="procesaPropagar($event)" (noneParticipants)="processMoveParticipants($event)" (ListaVotosEmit)="ShowListVotos($event)" (showDiv)="showDiv($event) " ></app-cartas>
+<app-cartas [userList]="userList" [mostrarDivCartas]="mostrarDivCartas" class="row col-md-12" (showParticipants)="procesaPropagar($event)" (noneParticipants)="processMoveParticipants($event)" (showDiv)="showDiv($event) " ></app-cartas>
 </div>
