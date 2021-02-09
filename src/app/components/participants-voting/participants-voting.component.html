@@ -1,6 +1,10 @@
+<h3>Soy un componente Dinamico</h3>
 <div class="div-participants-voting">
-    <a *ngFor="let user of userList">
+    <a *ngFor="let user of listParticipants">
 
-        <h6 *ngIf="user.isInvited=='1'">{{user.NameUsuario}}<i class="far fa-clock" [ngStyle]="{'display':showIcon ? 'inlineblock': 'none'}"></i><i class="far fa-thumbs-up" [ngStyle]="{'display':showIcon ? 'none': 'inlineblock'}"></i></h6>
+        <h6>{{user.NameUsuario}}
+            <i class="far fa-clock" *ngIf="user.vote == null"></i>
+            <i class="far fa-thumbs-up" *ngIf="user.vote == '1'"></i>
+        </h6>
     </a>
 </div>

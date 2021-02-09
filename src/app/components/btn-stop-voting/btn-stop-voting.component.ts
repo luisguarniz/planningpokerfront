@@ -15,17 +15,9 @@ export class BtnStopVotingComponent implements OnInit {
   @Output() showDiv = new EventEmitter<boolean>();
   @Input() ListaVotos ;
 
-  //VotingSessionCode;
-  //mostrarDiv : boolean = true;
-  roomCode;
-  echo;
-  constructor(private router:Router,
-    private votesessionservice : VoteSessionService,
-    private messageservice : MessageService,
-    private dataservice: DataService) 
+  constructor() 
     { 
-      this.roomCode = dataservice.Servicesrooms.RoomCode;
-      this.echo = this.messageservice.websocket();
+      
     }
 
   ngOnInit(): void {

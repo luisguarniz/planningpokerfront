@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http'; //esto sirve para poder
 import { FormsModule } from '@angular/forms';
 import { ParticipantsVotingComponent } from './components/participants-voting/participants-voting.component';
 import { CabeceraInvitedComponent } from './components/cabecera-invited/cabecera-invited.component';
+import { DynamicHostDirective } from './directive/dynamic-host.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,11 @@ import { CabeceraInvitedComponent } from './components/cabecera-invited/cabecera
     InvitedStartComponent,
     CartasVotingInvitedComponent,
     ParticipantsVotingComponent,
-    CabeceraInvitedComponent
+    CabeceraInvitedComponent,
+    DynamicHostDirective
+  ],
+  entryComponents:[
+    ParticipantsVotingComponent
   ],
   imports: [
     BrowserModule,

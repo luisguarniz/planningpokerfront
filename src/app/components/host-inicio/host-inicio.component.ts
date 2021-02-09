@@ -40,16 +40,15 @@ export class HostInicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
+   this.echo.private(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)// "room" es el nombre del parametro que pusimos en app-routing
     .listen('messageTest', (resp) => {
-      console.log(resp);
     });
 
+    
 
     //manejo de los usuarios que se unen a nuestro canal
   this.echo.join(`room.${this.activatedRoute.snapshot.paramMap.get("room")}`)
     .here((users) => {
-        console.log(users);
         this.userList = users;
     })
     .joining((user) => {

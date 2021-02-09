@@ -12,6 +12,5 @@ export class CabeceraInvitedComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("cabecera invitados RoomCodeI:" + this.dataservice.InvitedRoom.RoomCodeI);
   }
 }

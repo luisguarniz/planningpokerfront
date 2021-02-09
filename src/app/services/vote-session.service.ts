@@ -64,4 +64,16 @@ export class VoteSessionService {
     }
    return this._http.post(url, data, {headers});
   }
+
+  setVotingParticipants(setVotes:any) {
+    const url = `${environment.urlBase}api/Votingsession/setVotingParticipants`;
+
+    const data = {
+      setVotes
+    };
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.cookie.get('token')}`,
+    });
+    return this._http.post(url,data,{headers});
+  }
 }

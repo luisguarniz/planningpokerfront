@@ -16,5 +16,7 @@ export class DataService {
   VotingSessionCode : any;
   VoteList : any;
   InvitedRoom : InvitedRoom;
+  idAdmin : any;
+  listParticipants : any;
   constructor() { }
 }

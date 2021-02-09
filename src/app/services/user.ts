@@ -7,6 +7,7 @@ export interface User {
     token?: string ;
     isAdmin?: string;
     isInvited?: string;
+    voting? : boolean;
     remember_token?: null,
     updated_at?: string,
 }

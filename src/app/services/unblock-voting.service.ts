@@ -24,4 +24,18 @@ export class UnblockVotingService {
     }
    return this.http.post(url, data, {headers});
   }
+
+  changeIcon(msgvoto: Boolean,to: any, socketsID){
+
+    const url = `${environment.urlBase}api/Message/changeIcon`;
+    const headers = new HttpHeaders({
+      Authorization : `Bearer ${this.cookie.get('token')}`,
+      'X-Socket-ID': socketsID
+    });
+    const data = {
+      msgvoto,
+      to
+    }
+   return this.http.post(url, data, {headers});
+  }
 }

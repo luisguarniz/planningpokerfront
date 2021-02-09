@@ -81,6 +81,7 @@ export class InicioComponent implements OnInit {
           this.cookie.set('token', response.token);
           this.cookie.set('user', JSON.stringify(response.user));
           this.user = response;
+          this.dataservice.idAdmin = this.user.user.AdminUserCode;
 
           //ya teniendo los datos del Host entonces creamos la sala hay un objeto dentro del JSON por eso se accede de esta manera
           this._RoomService
@@ -90,9 +91,6 @@ export class InicioComponent implements OnInit {
               this.user.user.token
             )
             .subscribe((response) => {
-              console.log(
-                'el id que mande a crear el room es:' + this.user.user.id
-              );
               this.rooms = response;
               this.dataservice.Servicesrooms = this.rooms; // ahora asigno los valores a la variable Servicesrooms que esta en el servicio DataService
               this.cookie.set('idAdmin', JSON.stringify(this.rooms.idAdmin)); //creo una cookie con el nombre'AdminUserCode' y con el contenido de mi variable AdminUserCode
