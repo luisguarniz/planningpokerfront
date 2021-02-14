@@ -71,8 +71,6 @@ export class InicioComponent implements OnInit {
 
     this.userservice.getUser().subscribe((response) => {
       this.userC = response;
-      // this.dataservice.Servicesuser = this.user;
-      // this.NameUsuario = this.dataservice.Servicesuser.NameUsuario;
 
       //el password siempre es 12345678
       this.userservice

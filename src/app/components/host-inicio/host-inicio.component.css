@@ -9,3 +9,7 @@
  align-items: center;   
  text-align: center;
 }
+.div-imgPlanning img{
+    height: 300px;
+    width: 100%;
+    }

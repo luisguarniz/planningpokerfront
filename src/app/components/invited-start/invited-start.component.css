@@ -12,3 +12,7 @@
 .div-block{
     display:initial;
 }
+.div-imgPlanning img{
+height: 300px;
+width: 100%;
+}

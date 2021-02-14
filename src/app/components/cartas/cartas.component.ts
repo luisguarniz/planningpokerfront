@@ -80,7 +80,6 @@ export class CartasComponent implements OnInit {
   onblock() {
     this.showdivResultVotacion = false;
     
-
     //enviar RoomID para que se cree una sesion de votacion
     this.votesession
       .makeVotingSession(this.RoomID, this.cookie.get('cookie'))
